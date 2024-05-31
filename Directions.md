@@ -35,3 +35,53 @@ Repeat Steps 1 and 3 for daily stock information file and data, adding a new `Zi
 ## Step 6
 Add code inside the loop in `nasdaqMain()` to print out a summary of stock data by year for the ticker symbol the user enters. You should print out a table showing year, average closing price, and average volume for each year of that stock. For example, it might look something like this (these are the correct numbers, so you can test your code against this):
 
+<pre>Ticker symbol: <span style="color: #008; font-weight: 900;">aapl</span>
+[AAPL] Apple Inc. Common Stock (United States) records:
+    Year    Average close      Average volume
+    1980    $    0.10             103,450,092
+    1981    $    0.08              32,398,988
+    1982    $    0.07              84,446,671
+    1983    $    0.13             175,940,755
+    1984    $    0.09             165,925,033
+    1985    $    0.07             180,524,888
+    1986    $    0.11             210,763,724
+    1987    $    0.27             236,250,232
+    1988    $    0.29             163,213,350
+    1989    $    0.29             202,007,244
+    1990    $    0.27             175,501,742
+    1991    $    0.38             226,670,558
+    1992    $    0.40             161,960,289
+    1993    $    0.30             223,134,102
+    1994    $    0.25             226,809,111
+    1995    $    0.30             294,708,488
+    1996    $    0.19             209,426,066
+    1997    $    0.14             284,440,158
+    1998    $    0.23             457,119,822
+    1999    $    0.44             544,058,355
+    2000    $    0.69             477,387,288
+    2001    $    0.31             381,684,664
+    2002    $    0.29             305,610,822
+    2003    $    0.28             282,659,733
+    2004    $    0.54             483,339,955
+    2005    $    1.41             723,813,422
+    2006    $    2.14             859,358,430
+    2007    $    3.87             984,047,751
+    2008    $    4.29           1,130,360,498
+    2009    $    4.43             568,467,011
+    2010    $    7.85             599,305,266
+    2011    $   10.99             492,298,966
+    2012    $   17.44             527,856,817
+    2013    $   14.59             406,434,800
+    2014    $   20.42             252,610,922
+    2015    $   27.03             207,397,617
+    2016    $   24.04             153,690,123
+    2017    $   35.25             108,538,270
+    2018    $   44.94             136,080,258
+    2019    $   50.29             112,122,788
+    2020    $   93.15             157,564,646
+    2021    $  138.66              90,524,627
+    2022    $  153.12              87,910,376
+    2023    $  171.67              59,217,028
+    2024    $  179.32              61,071,337</pre>
+
+Remember that you can use [f-strings](https://docs.scala-lang.org/scala3/book/string-interpolation.html#the-f-interpolator-f-strings) to format values nicely in Scala with `printf`-style formatting codes. The average closing price and average volume columns shown in the example above use `%8.2f` and `%16,d` respectively
