@@ -8,16 +8,19 @@ import scala.collection.SortedMap
 def zipEntryLines(reader: ZipEntryReader): LazyList[String] =
   ??? // replace with your code!
 
+
 /** Converts a CSV line string to a StockRecord object */
 // Use the Pokémon example from class for inspiration. Use LocalDate.parse() to parse the date string.
 def lineToStockRecord(line: String): StockRecord =
   ??? // replace with your code!
+
 
 /** Converts a CSV line string to a Company object */
 // Similar to lineToStockRecord(). However, some lines of the CSV don't include a company name, so your code should
 // work with both (ticker,name,country) lines and (ticker,name) ones. (Use "" for country if not specified.)
 def lineToCompany(line: String): Company =
   ??? // replace with your code!
+
 
 @main
 def nasdaqMain(): Unit =
@@ -45,7 +48,15 @@ def nasdaqMain(): Unit =
     //      (Not all valid ticker symbols are listed in nasdaq_symbols.zip; if this one isn't, then just proceed with
     //      the next step below.)
     //   - In your LazyList of StockRecords, use .dropWhile() and .takeWhile() (see directions) to filter to the
-    //      user's entered ticker symbol. Use .group
+    //      user's entered ticker symbol. Use .groupBy() to group the records by year, then compute the average closing
+    //      price and volume for each year. Print out a nice table showing the year, average closing price, and average
+    //      volume for each year.
+    //      Try to do this without ever writing a loop! All of this is achievable using methods like .map() and .sum().
+    //      (SortedMap.from() is a method that takes a Map as parameter and returns a SortedMap - you may find this
+    //      helpful!)
+
 
 
   // Close both the ZipEntryReaders you created at the top
+  // companyReader.close()
+  // recordReader.close()
