@@ -84,4 +84,11 @@ Add code inside the loop in `nasdaqMain()` to print out a summary of stock data 
     2023    $  171.67              59,217,028
     2024    $  179.32              61,071,337</pre>
 
-Remember that you can use [f-strings](https://docs.scala-lang.org/scala3/book/string-interpolation.html#the-f-interpolator-f-strings) to format values nicely in Scala with `printf`-style formatting codes. The average closing price and average volume columns shown in the example above use `%8.2f` and `%16,d` respectively
+Remember that you can use [f-strings](https://docs.scala-lang.org/scala3/book/string-interpolation.html#the-f-interpolator-f-strings) to format values nicely in Scala with `printf`-style formatting codes. The average closing price and average volume columns shown in the example above use `%8.2f` and `%,20d` respectively. (To show a `$` character in a formatted string, double it: `f"... $$ ..."`.)
+
+Some hints for doing this:
+- This can be done without writing a loop of any kind (although it is not a requirement of the project to do that). Try to figure out how to combine the pieces that you know like `map()` and `foreach()` to make that happen!
+- You can use `filter()` to grab only the records of the relevant stock, but that's a bad idea in this instance: it will need to check every row in the file since it doesn't know that all the records for the same stock are consecutive. Instead, combine `dropWhile()` and `takeWhile()`, both of which take predicates (`StockRecord => Boolean`), to first skip past all the records before the relevant stock (`dropWhile()`), and then only take the rows while they belong to the relevant stock (`takeWhile()`). **If you do this correctly, stocks listed early in the file (such as AAPL and AMZN) should run very very fast, while ones later in the file (like GOOG and MSFT) should take much longer.
+- Use the `groupBy()` method to group the rows by year. The result is a `Map[Int, LazyList[StockRecord]]`, which allows you to easily compute the averages within each year.
+- An easy way to sort the resulting map by year is to put it in a `SortedMap`, using `SortedMap.from(...)`.
+- If you have a list of a numeric type (such as `Double` or `Long`), you can use `.sum()` to calculate its total. This is helpful when computing averages.
